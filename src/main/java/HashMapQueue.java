@@ -8,10 +8,10 @@ import java.util.concurrent.ConcurrentHashMap;
  * For enQueue it's O(1) in the best case and O(n) in the worst case. Worst case appears if we wanna enqueue a few elements
  * into the same queue object, so we end up with several different queues.
  *
- * ATTENTION There is a huge trouble about this implementation.
- * As it doesn't remove deQueued elements from the map sooner or later we might run out of memory.
+ * ATTENTION There are several troubles about this implementation.
+ * One is as it doesn't remove deQueued elements from the map sooner or later we might run out of memory.
  * so TODO come up with links counting for every entry in the map
- *
+ * 
  * @param <T> items type
  * @author leonid.ivashchenko
  */
@@ -82,6 +82,7 @@ public class HashMapQueue<T> implements Queue<T> {
             newMap.put(tail, t);
         }
 
+        //TODO we don't have to copy the whole map, if head > 0 then we can get rid of the first element in the new map
         enQueued = true;
         return new HashMapQueue<>(newMap, head, tail + 1);
     }
