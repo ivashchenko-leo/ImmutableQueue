@@ -2,7 +2,6 @@
  * Interface for an immutable queue.
  *
  * @param <T> stored items type
- * @author leonid.ivashchenko
  */
 public interface Queue<T> {
 

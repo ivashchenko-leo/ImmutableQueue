@@ -30,15 +30,29 @@ public abstract class QueueTest {
         assertEquals(new Long(1L), queue2.head());
 
         Queue<Long> queue3 = queue2.enQueue(2L);
+        Queue<Long> queue4 = queue2.enQueue(3L);
 
+        assertEquals(new Long(1L), queue3.head());
+        assertEquals(new Long(1L), queue4.head());
+        assertEquals(new Long(1L), queue2.head());
+
+        Queue<Long> queue5 = queue3.deQueue();
+        Queue<Long> queue6 = queue4.deQueue();
+
+        assertEquals(new Long(2L), queue5.head());
+        assertEquals(new Long(3L), queue6.head());
         assertEquals(new Long(1L), queue3.head());
         assertEquals(new Long(1L), queue2.head());
 
-        Queue<Long> queue4 = queue3.deQueue();
-
-        assertEquals(new Long(2L), queue4.head());
-        assertEquals(new Long(1L), queue3.head());
-        assertEquals(new Long(1L), queue2.head());
+        Queue<Long> queue7 = queue3.enQueue(3L).enQueue(4L);
+        queue7 = queue7.deQueue();
+        assertEquals(new Long(2L), queue7.head());
+        queue7 = queue7.deQueue();
+        assertEquals(new Long(3L), queue7.head());
+        queue7 = queue7.deQueue();
+        assertEquals(new Long(4L), queue7.head());
+        queue7 = queue7.deQueue();
+        assertTrue(queue7.isEmpty());
     }
 
     /**
@@ -54,17 +68,26 @@ public abstract class QueueTest {
         Queue<Long> queue2 = queue1.deQueue();
 
         assertFalse(queue2.isEmpty());
+        assertFalse(queue1.isEmpty());
+        assertEquals(new Long(1L), queue1.head());
         assertEquals(new Long(2L), queue2.head());
 
         Queue<Long> queue3 = queue2.deQueue();
+        Queue<Long> queue4 = queue2.deQueue();
 
+        assertFalse(queue4.isEmpty());
         assertFalse(queue3.isEmpty());
+        assertFalse(queue2.isEmpty());
+        assertFalse(queue1.isEmpty());
+        assertEquals(new Long(1L), queue1.head());
+        assertEquals(new Long(2L), queue2.head());
         assertEquals(new Long(3L), queue3.head());
+        assertEquals(new Long(3L), queue4.head());
 
-        Queue<Long> queue4 = queue3.deQueue();
+        Queue<Long> queue5 = queue3.deQueue();
 
-        assertTrue(queue4.isEmpty());
-        queue4.head();
+        assertTrue(queue5.isEmpty());
+        queue5.head();
     }
 
     /**

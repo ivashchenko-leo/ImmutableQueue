@@ -2,7 +2,9 @@ import java.util.Collection;
 import java.util.LinkedList;
 
 /**
- * Linked container immutable queue implementation. The simplest but not the most efficient.
+ * Immutable queue implementation based on LinkedList. The simplest but not the most efficient.
+ * EnQueue and deQueue methods have O(n) complexity which isn't that good.
+ * But this implementation is robust and will work in concurrent environment (thread safe).
  *
  * @param <T> elements type
  * @author leonid.ivashchenko
