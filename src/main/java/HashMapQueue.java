@@ -11,7 +11,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * ATTENTION There are several troubles about this implementation.
  * One is as it doesn't remove deQueued elements from the map sooner or later we might run out of memory.
  * so TODO come up with links counting for every entry in the map
- * 
+ *
  * @param <T> items type
  * @author leonid.ivashchenko
  */

@@ -4,7 +4,7 @@ import java.util.NoSuchElementException;
 /**
  * Recursive implementation of the Queue. deQueue, head and isEmpty have O(1) complexity.
  * EnQueue has O(n) and we might get a StackOverflowException if we have too many invocations.
- * TODO think how to get rid of recursion
+ * TODO replace recursion with a stack and while
  *
  * @param <T>
  * @author leonid.ivashchenko
